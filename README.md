@@ -1,8 +1,15 @@
-# java-getting-started
+# Streamer Event Viewer (SEV)
 
-A barebones Java app, which can easily be deployed to Heroku.
+This application is a Spring Boot application. It also depends on other frameworks including:
+<ul><li>Spring Security and Spring OAuth client framework to integrate with Twitch as its Identity Provider. 
+Users can login to this application using their twitch credential. 
+<li>Spring JPA to store data in Postgres DB.
+<li>Liquibase for database schema management. 
+<li>Spring Cloud OpenFeign framework for interactions with Twitch APIs. 
+<li>Thymeleaf and Spring Web for UI.
+</ul>
 
-This application supports the [Getting Started with Java on Heroku](https://devcenter.heroku.com/articles/getting-started-with-java) article - check it out.
+The source code is a fork from the Heroku's [Java Getting Started sample app](https://github.com/heroku/java-getting-started.git).
 
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
@@ -11,8 +18,8 @@ This application supports the [Getting Started with Java on Heroku](https://devc
 Make sure you have Java and Maven installed.  Also, install the [Heroku CLI](https://cli.heroku.com/).
 
 ```sh
-$ git clone https://github.com/heroku/java-getting-started.git
-$ cd java-getting-started
+$ git clone https://github.com/boonma04/SEV.git
+$ cd SEV
 $ mvn install
 $ heroku local:start
 ```
