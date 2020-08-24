@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'db')}">
+
+<body>
+
+<div class="jumbotron">
+  <p>My Clips</p>
+</div>
+
+<div class="container">
+  <div class="row">
+    <table class="table">
+      <tr class="table.header header__item">
+        <th>Boardcaster</th>
+        <th>Slug</th>
+        <th>Created</th>
+        <th>Views</th>
+      </tr>
+      <tr data-th-each="clip : ${clips}">
+        <td data-th-text="${clip.broadcasterName}"></td>
+        <td><a th:href="@{${clip.editUrl}}"><span th:text="${clip.clipId}"/></a></td>
+        <td data-th-text="${clip.created}"></td>
+        <td data-th-text="${clip.viewCount}"/>
+      </tr>
+    </table>
+  </div>
+  <div class="alert alert-info text-center" role="alert">
+    Total number of views for my clips: <span th:text="${myClipViewCount}"/>
+  </div>
+  <div class="row">
+    <table class="table">
+      <tr class="table.header header__item">
+        <th>Boardcaster</th>
+        <th>Views</th>
+      </tr>
+      <tr data-th-each="view : ${viewCountByChannels}">
+        <td data-th-text="${view.broadcasterName}"></td>
+        <td data-th-text="${view.count}"/>
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+</body>
+</html>

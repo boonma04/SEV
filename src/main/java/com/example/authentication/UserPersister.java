@@ -30,6 +30,7 @@ public class UserPersister implements ApplicationListener<AuthenticationSuccessE
         var token = (OAuth2LoginAuthenticationToken)event.getSource();
         var user = (DefaultOidcUser)token.getPrincipal();
 
+        log.info("User " + user.getEmail() + " is logging in via OAuth2");
         TwitchUser userEntity = Optional.ofNullable(userRepository.findByTwitchUserId(user.getSubject()))
                 .map(u -> u.toBuilder())
                 .orElseGet(() -> TwitchUser.builder())
@@ -47,7 +48,7 @@ public class UserPersister implements ApplicationListener<AuthenticationSuccessE
         userEntity = userRepository.save(userEntity);
 
         TwitchOAuth oauth = TwitchOAuth.builder()
-                .userId(userEntity.getId())
+                .userId(userEntity.getTwitchUserId())
                 .accessToken(token.getAccessToken().getTokenValue())
                 .refreshToken(token.getRefreshToken().getTokenValue())
                 .scopes(String.join(",", token.getAccessToken().getScopes()))

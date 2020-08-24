@@ -15,7 +15,7 @@ import javax.persistence.Table;
 public class TwitchOAuth {
     @NonNull
     @Id
-    private Long userId;
+    private String userId;
     private String scopes;
     private String accessToken;
     private String refreshToken;

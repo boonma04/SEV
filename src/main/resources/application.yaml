@@ -4,9 +4,9 @@ spring:
       client:
         registration:
           twitch:
-            clientId: 54uoe3en5xvqlc0z0mdw3ghuucmvpk
-            clientSecret: qxn7myepvb1qy4dl4wqxmvdlnhozdg
-            scope: ["user:read:email","openid","chat:read"]
+            clientId: "${twitch.api.clientId}"
+            clientSecret: "${twitch.api.secret}"
+            scope: ["user:read:email","openid","chat:read","clips:edit"]
         provider:
           twitch:
             issuer-uri: https://id.twitch.tv/oauth2

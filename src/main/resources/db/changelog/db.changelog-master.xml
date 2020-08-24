@@ -16,12 +16,14 @@
             <column name="name" type="VARCHAR(255)"/>
             <column name="email" type="VARCHAR(255)"/>
             <column name="picture" type="VARCHAR(2048)"/>
-            <column name="twitch_user_id" type="VARCHAR(255)"/>
+            <column name="twitch_user_id" type="VARCHAR(255)">
+                <constraints unique="true"/>
+            </column>
         </createTable>
 
         <createTable tableName="oauth">
-            <column name="user_id" type="BIGINT">
-                <constraints unique="true" nullable="false" foreignKeyName="fk_oauth_user" references="twitch_user(id)"/>
+            <column name="user_id" type="VARCHAR(255)">
+                <constraints unique="true" nullable="false" foreignKeyName="fk_oauth_user" references="twitch_user(twitch_user_id)"/>
             </column>
             <column name="scopes" type="VARCHAR(1024)"/>
             <column name="access_token" type="VARCHAR(255)"/>
@@ -29,4 +31,20 @@
         </createTable>
     </changeSet>
 
+    <changeSet author="Koson" id="10001">
+        <createTable tableName="clip">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_by" type="VARCHAR(255)">
+                <constraints nullable="false" foreignKeyName="fk_clip_creator" references="twitch_user(twitch_user_id)"/>
+            </column>
+            <column name="created" type="DATETIME"/>
+            <column name="clip_id" type="VARCHAR(255)"/>
+            <column name="edit_url" type="VARCHAR(2048)"/>
+            <column name="broadcaster_id" type="VARCHAR(255)"/>
+            <column name="broadcaster_name" type="VARCHAR(255)"/>
+            <column name="view_count" type="INT"/>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>
