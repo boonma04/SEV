@@ -19,6 +19,9 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * Controller to handle the UI logic for Clip page
+ */
 @Controller
 @Log
 public class ClipController {

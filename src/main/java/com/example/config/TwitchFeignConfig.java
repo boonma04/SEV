@@ -8,6 +8,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 
+/**
+ * Configuration to customize twitch's Feign client.
+ */
 @Configuration
 public class TwitchFeignConfig {
     @Value("${twitch.api.clientId}")

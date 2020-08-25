@@ -10,6 +10,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ * We need this request resolver so that we can add a custom claim to Twitch's authorization endpoint.
+ * The claim allows us to define what information we want to be included in the ID token.
+ */
 public class TwitchAuthorizationRequestResolver implements OAuth2AuthorizationRequestResolver {
     private static final String AUTH_REQUEST_CLAIMS = "{ \"id_token\": { \"email\": null, \"preferred_username\": null, \"picture\": null } }";
 

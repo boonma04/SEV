@@ -5,6 +5,9 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
+/**
+ * JPA-based repository interface to load ClipEntity
+ */
 public interface ClipRepository extends JpaRepository<ClipEntity, Long> {
     List<ClipEntity> findByCreatedBy(String userId);
 

@@ -10,6 +10,10 @@ import org.springframework.security.oauth2.client.authentication.OAuth2Authentic
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.security.oauth2.core.oidc.user.DefaultOidcUser;
 
+/**
+ * This interceptor is to add common headers for Twitch API. It mainly requires to add the access token
+ * and client id to the header.
+ */
 public class TwitchAuthRequestInterceptor implements RequestInterceptor {
     private final TwitchOAuthRepository oauthRepo;
     private final ClientRegistrationRepository clientRepo;

@@ -14,6 +14,10 @@ import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
+/**
+ * This class is to listen to the OIDC login's success event. When the event happens,
+ * we will create or update the authenticated user info in our own database.
+ */
 @Component
 @Log
 public class UserPersister implements ApplicationListener<AuthenticationSuccessEvent> {
